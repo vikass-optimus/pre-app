@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { SyntheticEvent } from "react";
+import { TextField, Button, Box, Typography } from "@mui/material";
 
 
 const LoginForm = () => {
@@ -12,12 +13,18 @@ const LoginForm = () => {
         console.log(target, { email, password });
     };
 
-    return <form onSubmit={submitForm} className="flex flex-col gap-4">
-        <input className="border p-2" onChange= {(ev) => setEmail(ev.target.value)} value={email} type="email" placeholder="Email" required />
-        <input className="border p-2" onChange= {(ev) => setPassword(ev.target.value)} value={password} type="password" placeholder="Password" required />
-        <button className="bg-blue-500 text-white p-2" type="submit">Login</button>
-    </form>
-};
+    return (
+    <Box
+        component="form"
+        onSubmit={submitForm}
+        sx={{ display: "flex", flexDirection: "column", gap: 2, width: 300 }}
+    >
+        <Typography variant="h6">Material UI Login Form</Typography>
+        <TextField onChange={(ev) => setEmail(ev.target.value)} value={email} label="Email" placeholder="Enter Email" variant="outlined" required/>
+        <TextField onChange={(ev) => setPassword(ev.target.value)} value={password} label="Password" placeholder="Enter Password" required variant="outlined" />
+        <Button type="submit" variant="contained">Submit</Button>
+    </Box>
+)};
 
 export default LoginForm;
 

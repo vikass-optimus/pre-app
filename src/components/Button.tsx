@@ -1,7 +1,14 @@
-const Button = ({text}: {text: string}) => {
+import type { FC } from "react";
+import styles from "./Button.module.css";
+
+type ButtonProps = {
+  text?: string;
+};
+
+const Button: FC<ButtonProps> = ({text}) => {
     if (!text) { text = "Submit" }
   return (
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    <button className={styles.myButton}>
       {text}
     </button>
   );

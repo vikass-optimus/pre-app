@@ -1,7 +1,21 @@
 import React, { Component } from "react";
 import type { SyntheticEvent } from "react";
+import { LoginButton } from "./LoginButton";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+`;
 
 class LoginClassForm extends Component {
+
     state = {
         email: "",
         password: "",
@@ -25,16 +39,15 @@ class LoginClassForm extends Component {
 
     render(): React.ReactNode {
         return (
-            <form onSubmit={this.submitForm} className="flex flex-col gap-4">
-                <input
-                    className="border p-2"
+            <StyledForm onSubmit={this.submitForm}>
+                <StyledInput
                     onChange={this.setEmail}
                     value={this.state.email}
                     type="email"
                     placeholder="Email"
                     required
                 />
-                <input
+                <StyledInput
                     className="border p-2"
                     onChange={this.setPassword}
                     value={this.state.password}
@@ -42,10 +55,8 @@ class LoginClassForm extends Component {
                     placeholder="Password"
                     required
                 />
-                <button className="bg-gray-500 text-white p-2" type="submit">
-                    Login
-                </button>
-            </form>
+                <LoginButton text='Login' />
+            </StyledForm>
         );
     }
 }
